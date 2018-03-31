@@ -19,6 +19,10 @@ public class GameOfLife extends Canvas implements Runnable{
     /* Variabler */
     public BufferedImage image;
     public int[] pixels;
+
+    public boolean[] cGrid;
+    public boolean[] pGrid;
+
     public int gridSize = 100;
     Random r = new Random();
 
@@ -38,6 +42,13 @@ public class GameOfLife extends Canvas implements Runnable{
 
     public void start(){
         new Thread(this).start();
+
+        cGrid = new boolean[pixels.length];
+        pGrid = new boolean[pixels.length];
+        for (int i = 0; i < cGrid.length; i++){
+            cGrid[i] = r.nextInt() / 100.0 > 70.0 ? true : false;
+        }
+
     }
 
     @Override
@@ -63,11 +74,14 @@ public class GameOfLife extends Canvas implements Runnable{
 
     Graphics g = bs.getDrawGraphics();
 
-
-
+    // Disse forloops ændre graphics / hvordan pixels ser ud i GameOfLife
     for (int i = 0; i < pixels.length; i++) {
-        pixels[i] = r.nextInt(0xfffffff);
+        pixels[i] = 0;
     }
+        for (int i = 0; i < pixels.length; i++) {
+            pixels[i] = cGrid[i] ? 0xffffff : 0;
+        }
+
 
     g.drawImage(image, 0, 0, frameSize, frameSize,  null);
     g.dispose();

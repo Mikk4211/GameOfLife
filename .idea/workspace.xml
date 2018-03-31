@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1fd2fe6-f473-4050-954a-c26250fe1df4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../GameOfLife/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/Cell.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../GameOfLife/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../GameOfLife/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/GameOfLife.java" afterPath="$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/GameOfLife.java" />
     </list>
@@ -19,12 +19,29 @@
       <file leaf-file-name="GameOfLife.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/GameOfLife.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="73" column="14" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+            <state relative-caret-position="210">
+              <caret line="76" column="68" lean-forward="false" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
-                <element signature="e#1021#1022#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/Cell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#929#930#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#1046#1047#0" expanded="true" />
+                <element signature="e#1078#1079#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1149#1150#0" expanded="true" />
+                <element signature="e#1183#1184#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -50,6 +67,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/Cell.java" />
         <option value="$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/GameOfLife.java" />
       </list>
     </option>
@@ -242,12 +260,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522157507011</updated>
-      <workItem from="1522157512401" duration="5381000" />
+      <workItem from="1522157512401" duration="7578000" />
     </task>
+    <task id="LOCAL-00001" summary="Fået en masser flimmer pixels til at komme frem.">
+      <created>1522324981022</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1522324981022</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5381000" />
+    <option name="totallyTimeSpent" value="7578000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -288,19 +314,38 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fået en masser flimmer pixels til at komme frem." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fået en masser flimmer pixels til at komme frem." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1078#1079#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../GameOfLife/src/Sorensen/Mikkel/GameOfLife.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="73" column="14" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
+        <state relative-caret-position="210">
+          <caret line="76" column="68" lean-forward="false" selection-start-line="76" selection-start-column="68" selection-end-line="76" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
           </folding>
         </state>
       </provider>
