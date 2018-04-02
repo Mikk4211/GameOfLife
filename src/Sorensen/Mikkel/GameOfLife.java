@@ -17,14 +17,15 @@ public class GameOfLife extends Canvas implements Runnable{
     public static String title = "Game Of Life";
 
     /* Variabler */
+    public Random r = new Random();
+    public int gridSize = 100;
+    public double generationSpeed = 20.0;
+
     public BufferedImage image;
     public int[] pixels;
 
     public boolean[] cGrid;
     public boolean[] pGrid;
-
-    public int gridSize = 100;
-    Random r = new Random();
 
     /* Constructor */
     public GameOfLife(){
@@ -33,35 +34,108 @@ public class GameOfLife extends Canvas implements Runnable{
         setMaximumSize(d);
         setPreferredSize(d);
 
-
         image = new BufferedImage(gridSize, gridSize, BufferedImage.TYPE_INT_RGB);
         pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
     }
 
-
-
     public void start(){
-        new Thread(this).start();
 
         cGrid = new boolean[pixels.length];
         pGrid = new boolean[pixels.length];
         for (int i = 0; i < cGrid.length; i++){
-            cGrid[i] = r.nextInt() / 100.0 > 70.0 ? true : false;
+            cGrid[i] = r.nextInt(100) / 100.0 > 0.8 ? true : false;
         }
 
+        new Thread(this).start();
     }
 
     @Override
     public void run() {
+
+       double frameCut = 1000000000.0 / generationSpeed;
+
+       long currentTime = System.nanoTime();
+       long previousTime = currentTime;
+       long passedTime = 0;
+
+       double unprocessedTime = 0.0;
+
+       long frameCounter = System.currentTimeMillis();
+       int generations = 1;
+
         while (true){
-            update();
+
+            previousTime = currentTime;
+            currentTime = System.nanoTime();
+            passedTime = currentTime - previousTime;
+
+            unprocessedTime += passedTime;
+
+            if (unprocessedTime > frameCut){
+                unprocessedTime = 0;
+                update();
+                generations++;
+            }
+
+            if (System.currentTimeMillis() - frameCounter >= 1000){
+                frameCounter = System.currentTimeMillis();
+                System.out.println("Generation: " + generations);
+            }
             render();
         }
     }
 
     public void update() {
 
+        for (int i = 0; i < pixels.length; i++)
+            pGrid[i] = cGrid[i];
+
+            for (int y = 0; y < gridSize; y++)
+            {
+                for (int x = 0; x < gridSize; x++)
+                {
+                    int res = 0;
+
+                    int xx0 = x -1;
+                    int yy0 = y -1;
+                    int xx1 = x +1;
+                    int yy1 = y +1;
+
+                    if (x != 0)
+                        res += pGrid[xx0 + gridSize * y] ? 1 : 0;
+
+                    if (y != 0)
+                        res += pGrid[x + gridSize * yy0] ? 1 : 0;
+
+                    if (x != gridSize - 1)
+                        res += pGrid[xx1 + gridSize * y] ? 1 : 0;
+
+                    if (y != gridSize - 1)
+                        res += pGrid[x + gridSize * yy1] ? 1 : 0;
+
+                    if (x != 0 && y != 0)
+                        res += pGrid[xx0 + gridSize * yy0] ? 1 : 0;
+
+                    if (x != 0 && y != gridSize - 1)
+                        res += pGrid[xx0 + gridSize * yy1] ? 1 : 0;
+
+                    if (x != gridSize - 1 && y != 0)
+                        res += pGrid[xx1 + gridSize * yy0] ? 1 : 0;
+
+                    if (x != gridSize - 1 && y != gridSize - 1)
+                        res += pGrid[xx1 + gridSize * yy1] ? 1 : 0;
+
+                    if (!(pGrid[x + gridSize * y] && (res == 3 || res == 2)))
+                        cGrid[x + gridSize * y] = false;
+
+                    if (!pGrid[x + gridSize * y] && res == 3)
+                        cGrid[x + gridSize * y] = true;
+
+                }
+
+         }
     }
+
 
     /* Laver en render metode, med en bufferstrategy. Bufferstrategyen hjælper til med at render Canvas / Window */
     public void render() {
@@ -74,7 +148,7 @@ public class GameOfLife extends Canvas implements Runnable{
 
     Graphics g = bs.getDrawGraphics();
 
-    // Disse forloops ændre graphics / hvordan pixels ser ud i GameOfLife
+    // Disse forloops ændrer graphics / hvordan pixels ser ud i GameOfLife
     for (int i = 0; i < pixels.length; i++) {
         pixels[i] = 0;
     }
